@@ -76,6 +76,10 @@ return require('packer').startup(function(use)
 
   --  显示对齐线
   use {'Yggdroot/indentLine' }
+  -- translate tool
+  use {
+    'voldikss/vim-translator'
+  }
 
 
   if packer_bootstrap then
