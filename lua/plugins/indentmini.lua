@@ -1,0 +1,16 @@
+-- local _, indentmini = pcall(require, 'indentmini')
+-- if not _ then
+--   vim.notify("Not found indentmini module!")
+--   return
+-- end
+--
+-- indentmini.setup({
+--   char = '|',
+--   exclude = {
+--     'erlang',
+--     'markdown',
+--   }
+-- })
+-- -- vim.cmd.highlight('default link IndentLine Comment')
+-- vim.cmd.highlight('IndentLine guifg=#123456')
+-- -- vim.cmd.highlight('IndentLineCurrent guifg=#123456')
