@@ -55,8 +55,6 @@ opt.smartcase = true
 -- 外观
 opt.termguicolors = true
 opt.signcolumn = "yes"
-cmd [[colorscheme tokyonight-moon]]
--- cmd [[colorscheme tokyonight]]
 
 -- encoding
 opt.encoding = "UTF-8"

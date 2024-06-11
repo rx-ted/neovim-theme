@@ -26,13 +26,23 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
   -- theme
   use 'folke/tokyonight.nvim'
-  -- statusline  for under line
+
+  use {
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+      "MunifTanjim/nui.nvim",
+      -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+    }
+  }
+
   use {
     'nvim-lualine/lualine.nvim',
     requires = {
       'kyazdani42/nvim-web-devicons',
-      'archibate/lualine-time',
-      opt = true
+      -- 'archibate/lualine-time',
     }
   }
   -- buffer line
@@ -42,13 +52,66 @@ return require('packer').startup(function(use)
     requires = 'nvim-tree/nvim-web-devicons'
   }
 
-  -- document tree
+  use({
+    "utilyre/barbecue.nvim",
+    tag = "*",
+    requires = {
+      "SmiteshP/nvim-navic",
+      "nvim-tree/nvim-web-devicons", -- optional dependency
+    },
+    after = "nvim-web-devicons",     -- keep this if you're using NvChad
+  })
+
+
+
   use {
-    'nvim-tree/nvim-tree.lua',
-    -- for icons
-    requires = { 'nvim-tree/nvim-web-devicons'
+    'nvim-treesitter/nvim-treesitter',
+    run = function()
+      require('nvim-treesitter.install').update({ with_sync = true })
+    end,
+    requires = {
+      'p00f/nvim-ts-rainbow',
+      'nvim-treesitter/nvim-treesitter-textobjects',
+      'nvim-treesitter/nvim-treesitter-context',
+      'JoosepAlviste/nvim-ts-context-commentstring',
+      'windwp/nvim-ts-autotag',
+      'andymass/vim-matchup',
+      'mfussenegger/nvim-treehopper',
+    },
+  }
+  use {
+    'hrsh7th/nvim-cmp',
+    requires = {
+      'onsails/lspkind-nvim',
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-nvim-lsp-signature-help',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-cmdline',
+      'f3fora/cmp-spell',
+      'hrsh7th/cmp-calc',
+      'hrsh7th/cmp-emoji',
+      'chrisgrieser/cmp_yanky',
+      'petertriho/cmp-git',
+      'lukas-reineke/cmp-rg',
+      'roobert/tailwindcss-colorizer-cmp.nvim',
+      "lukas-reineke/cmp-under-comparator",
+      'hrsh7th/cmp-copilot', -- TODO: uncomment this for AI completion
+      'saadparwaiz1/cmp_luasnip',
     }
   }
+
+  use {
+    'williamboman/mason.nvim',
+    'williamboman/mason-lspconfig.nvim',
+    'neovim/nvim-lspconfig',
+  }
+
+  use {
+    "rcarriga/nvim-notify"
+  }
+
+
   -- use control key to control hjkl to navigate windows
   use "christoomey/vim-tmux-navigator"
 
@@ -83,20 +146,12 @@ return require('packer').startup(function(use)
     },
   }
 
-  -- formatter tool
-  use { 'mhartington/formatter.nvim' }
-  use({ "wesleimp/stylua.nvim" })
-  use {
-    proxy .. 'sbdchd/neoformat'
-  }
-
-  -- -- translate tool
   use {
     'voldikss/vim-translator'
   }
 
   use({
-    proxy .. "L3MON4D3/LuaSnip",
+    "L3MON4D3/LuaSnip",
     tag = "v2.*",
     run = "make install_jsregexp"
   })
@@ -104,47 +159,11 @@ return require('packer').startup(function(use)
   use "saadparwaiz1/cmp_luasnip"
   use "rafamadriz/friendly-snippets"
 
-  use {
-    'hrsh7th/nvim-cmp',
-    requires = {
-      'onsails/lspkind-nvim',
-      'hrsh7th/cmp-nvim-lsp',
-      'hrsh7th/cmp-nvim-lsp-signature-help',
-      'hrsh7th/cmp-buffer',
-      'hrsh7th/cmp-path',
-      'hrsh7th/cmp-cmdline',
-      'f3fora/cmp-spell',
-      'hrsh7th/cmp-calc',
-      'hrsh7th/cmp-emoji',
-      'chrisgrieser/cmp_yanky',
-      'petertriho/cmp-git',
-      'lukas-reineke/cmp-rg',
-      'roobert/tailwindcss-colorizer-cmp.nvim',
-      "lukas-reineke/cmp-under-comparator",
-      'hrsh7th/cmp-copilot', -- INFO: uncomment this for AI completion
-      'saadparwaiz1/cmp_luasnip',
-    }
-  }
-
-  use {
-    'williamboman/mason.nvim',
-    'williamboman/mason-lspconfig.nvim',
-    'neovim/nvim-lspconfig',
-  }
-
-  use {
-    "rcarriga/nvim-notify"
-  }
   use "lukas-reineke/lsp-format.nvim"
 
   use {
     "stevearc/conform.nvim",
   }
-
-
-  -- use {
-  --   'numToStr/Navigator.nvim'
-  -- }
 
   use {
     "NeogitOrg/neogit",
@@ -156,22 +175,6 @@ return require('packer').startup(function(use)
       "ibhagwan/fzf-lua",              -- optional
     },
     config = function() require('neogit').setup {} end,
-  }
-
-  use {
-    'nvim-treesitter/nvim-treesitter',
-    run = function()
-      require('nvim-treesitter.install').update({ with_sync = true })
-    end,
-    requires = {
-      'p00f/nvim-ts-rainbow',
-      'nvim-treesitter/nvim-treesitter-textobjects',
-      -- 'nvim-treesitter/nvim-treesitter-context',
-      'JoosepAlviste/nvim-ts-context-commentstring',
-      'windwp/nvim-ts-autotag',
-      'andymass/vim-matchup',
-      'mfussenegger/nvim-treehopper',
-    },
   }
 
 
@@ -269,7 +272,6 @@ autocmd FileType markdown nnoremap <silent> mp :call mdip#MarkdownClipboardImage
   use {
     'folke/todo-comments.nvim'
   }
-
 
   if packer_bootstrap then
     require('packer').sync()
