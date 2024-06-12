@@ -132,17 +132,17 @@ return require('packer').startup(function(use)
 
   use "lukas-reineke/lsp-format.nvim"
 
-  -- use {
-  --   "NeogitOrg/neogit",
-  --   tag = 'v0.0.1',
-  --   requires = {
-  --     "nvim-lua/plenary.nvim",         -- required
-  --     "nvim-telescope/telescope.nvim", -- optional
-  --     "sindrets/diffview.nvim",        -- optional
-  --     "ibhagwan/fzf-lua",              -- optional
-  --   },
-  --   config = function() require('neogit').setup {} end,
-  -- }
+  use {
+    "NeogitOrg/neogit",
+    tag = 'v0.0.1',
+    requires = {
+      "nvim-lua/plenary.nvim",         -- required
+      "nvim-telescope/telescope.nvim", -- optional
+      "sindrets/diffview.nvim",        -- optional
+      "ibhagwan/fzf-lua",              -- optional
+    },
+    config = function() require('neogit').setup {} end,
+  }
   use "lukas-reineke/indent-blankline.nvim"
 
   use {
@@ -164,8 +164,10 @@ return require('packer').startup(function(use)
   use {
     'folke/todo-comments.nvim'
   }
-
-  -- Packer:
+  use({
+    "L3MON4D3/LuaSnip",
+    run = "make install_jsregexp"
+  })
 
 
   if packer_bootstrap then

@@ -1,6 +1,6 @@
 local _, lspconfig = pcall(require, "lspconfig")
 if not _ then
-  vim.notify("Not found nvim-lspconfig module!", error)
+  vim.notify("Not found nvim-lspconfig module!")
   return
 end
 
