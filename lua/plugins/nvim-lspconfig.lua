@@ -15,7 +15,6 @@ lspconfig.clangd.setup {
   on_attach = lsp_format.on_attach,
 }
 
-
 lspconfig.pyright.setup {
   on_attach = lsp_format.on_attach
 }
@@ -32,6 +31,3 @@ lspconfig.cmake.setup {
 lspconfig.bashls.setup {
   on_attach = lsp_format.on_attach
 }
-
-
--- vim.cmd [[cabbrev w execute "Format sync" <bar> w]]

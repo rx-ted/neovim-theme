@@ -25,7 +25,8 @@ return require('packer').startup(function(use)
   -- download package
   use 'wbthomason/packer.nvim'
   -- theme
-  use 'folke/tokyonight.nvim'
+  -- use 'folke/tokyonight.nvim'
+  use 'Mofiqul/vscode.nvim'
 
   use {
     "nvim-neo-tree/neo-tree.nvim",
@@ -62,22 +63,8 @@ return require('packer').startup(function(use)
     after = "nvim-web-devicons",     -- keep this if you're using NvChad
   })
 
-
-
   use {
     'nvim-treesitter/nvim-treesitter',
-    run = function()
-      require('nvim-treesitter.install').update({ with_sync = true })
-    end,
-    requires = {
-      'p00f/nvim-ts-rainbow',
-      'nvim-treesitter/nvim-treesitter-textobjects',
-      'nvim-treesitter/nvim-treesitter-context',
-      'JoosepAlviste/nvim-ts-context-commentstring',
-      'windwp/nvim-ts-autotag',
-      'andymass/vim-matchup',
-      'mfussenegger/nvim-treehopper',
-    },
   }
   use {
     'hrsh7th/nvim-cmp',
@@ -111,16 +98,10 @@ return require('packer').startup(function(use)
     "rcarriga/nvim-notify"
   }
 
-
-  -- use control key to control hjkl to navigate windows
   use "christoomey/vim-tmux-navigator"
 
-  -- with treesitter, has differences to dicrect for colors
-  use "p00f/nvim-ts-rainbow"
-  -- auto format
-  use "hrsh7th/cmp-path" -- 文件路径
+  use "hrsh7th/cmp-path"        -- 文件路径
 
-  -- use "numToStr/Comment.nvim" -- gcc和gc注释
   use "windwp/nvim-autopairs"   -- 自动补全括号
 
   use "lewis6991/gitsigns.nvim" -- 左则git提示
@@ -130,6 +111,7 @@ return require('packer').startup(function(use)
     "nvim-telescope/telescope.nvim",
     requires = {
       "nvim-lua/plenary.nvim",
+      "gbprod/yanky.nvim",
       "BurntSushi/ripgrep",
       {
         "nvim-telescope/telescope-fzf-native.nvim",
@@ -146,73 +128,30 @@ return require('packer').startup(function(use)
     },
   }
 
-  use {
-    'voldikss/vim-translator'
-  }
-
-  use({
-    "L3MON4D3/LuaSnip",
-    tag = "v2.*",
-    run = "make install_jsregexp"
-  })
-
   use "saadparwaiz1/cmp_luasnip"
-  use "rafamadriz/friendly-snippets"
 
   use "lukas-reineke/lsp-format.nvim"
 
-  use {
-    "stevearc/conform.nvim",
-  }
-
-  use {
-    "NeogitOrg/neogit",
-    tag = 'v0.0.1',
-    requires = {
-      "nvim-lua/plenary.nvim",         -- required
-      "nvim-telescope/telescope.nvim", -- optional
-      "sindrets/diffview.nvim",        -- optional
-      "ibhagwan/fzf-lua",              -- optional
-    },
-    config = function() require('neogit').setup {} end,
-  }
-
-
-  use({
-    'nvimdev/lspsaga.nvim',
-    after = 'nvim-lspconfig',
-  })
-
-  -- indent line
   -- use {
-  --   'nvimdev/indentmini.nvim',
-  --   event = 'BufEnter',
+  --   "NeogitOrg/neogit",
+  --   tag = 'v0.0.1',
+  --   requires = {
+  --     "nvim-lua/plenary.nvim",         -- required
+  --     "nvim-telescope/telescope.nvim", -- optional
+  --     "sindrets/diffview.nvim",        -- optional
+  --     "ibhagwan/fzf-lua",              -- optional
+  --   },
+  --   config = function() require('neogit').setup {} end,
   -- }
   use "lukas-reineke/indent-blankline.nvim"
-
-  -- use {
-  --   'neoclide/coc.nvim',
-  --   branch = 'release'
-  -- }
 
   use {
     "MunifTanjim/nui.nvim"
   }
   use "nvim-lua/plenary.nvim"
 
-  use "gbprod/yanky.nvim"
-
   use {
     "ray-x/lsp_signature.nvim",
-  }
-
-  use { 'dgagn/diagflow.nvim' }
-
-  use {
-    "smjonas/inc-rename.nvim",
-    config = function()
-      require("inc_rename").setup()
-    end,
   }
 
   use {
@@ -223,55 +162,11 @@ return require('packer').startup(function(use)
   }
 
   use {
-    "folke/trouble.nvim",
-  }
-
-  use {
-    "folke/zen-mode.nvim",
-    "folke/twilight.nvim",
-
-  }
-
-  use {
-    'rcarriga/nvim-dap-ui',
-    requires = {
-      'mfussenegger/nvim-dap',
-      'nvim-neotest/nvim-nio',
-      'theHamsta/nvim-dap-virtual-text',
-    },
-  }
-  use {
-    "akinsho/toggleterm.nvim"
-  }
-
-  use {
-    'iamcco/markdown-preview.nvim',
-    run = function() vim.fn["mkdp#util#install"]() end,
-    setup = function() vim.g.mkdp_filetypes = { "markdown" } end,
-    config = function() vim.cmd [[let g:mkdp_browser = '/usr/bin/google-chrome']] end,
-    ft = { "markdown" },
-    requires = 'iamcco/mathjax-support-for-mkdp',
-  }
-  use {
-    'mzlogin/vim-markdown-toc',
-    ft = { "markdown" },
-  }
-
-  use {
-    'ferrine/md-img-paste.vim',
-    config = function()
-      vim.cmd [[
-let g:mdip_imgdir = 'img' " save image in ./img
-let g:mdip_imgname = 'image'
-autocmd FileType markdown nnoremap <silent> mp :call mdip#MarkdownClipboardImage()<CR>
-        ]]
-    end,
-    ft = { "markdown" },
-  }
-
-  use {
     'folke/todo-comments.nvim'
   }
+
+  -- Packer:
+
 
   if packer_bootstrap then
     require('packer').sync()

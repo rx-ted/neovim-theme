@@ -34,23 +34,12 @@ cfg = {
   hint_enable = true,
   -- hint_prefix = "",
   hint_prefix = "🐼 ", -- Panda for parameter, NOTE: for the terminal not support emoji, might crash
-  -- or, provide a table with 3 icons
-  -- hint_prefix = {
-  -- above = "↙ ",  -- when the hint is on the line above the current line
-  -- current = "← ",  -- when the hint is on the same line
-  -- below = "↖ "  -- when the hint is on the line below the current line
-  -- },
   hint_scheme = "Comment",
   hi_parameter = "LspSignatureActiveParameter",
   close_timeout = 4000, -- close floating window after ms when laster parameter is entered
   fix_pos = false,      -- set to true, the floating window will not auto-close until finish all parameters
-  -- hint_enable = true,   -- virtual hint enable
-  -- hint_scheme = "String",
-  -- hint_inline = function() return false end, -- should the hint be inline(nvim 0.10 only)?  default false
-  -- return true | 'inline' to show hint inline, return 'eol' to show hint at end of line, return false to disable
-  -- return 'right_align' to display hint right aligned in the current line
   handler_opts = {
-    border = "rounded" -- double, rounded, single, shadow, none, or a table of borders
+    border = "rounded"  -- double, rounded, single, shadow, none, or a table of borders
   },
 
   always_trigger = false,                   -- sometime show signature on new line or in middle of parameter can be confusing, set it to false for #58
@@ -72,11 +61,7 @@ cfg = {
 
   select_signature_key = '<M-N>', -- cycle to next signature, e.g. '<M-n>' function overloading
   move_cursor_key = nil,          -- imap, use nvim_set_current_win to move cursor between current win and floating window
-  -- e.g. move_cursor_key = '<M-p>',
-  -- once moved to floating window, you can use <M-d>, <M-u> to move cursor up and down
-  keymaps = {} -- relate to move_cursor_key; the keymaps inside floating window
-  -- e.g. keymaps = { 'j', '<C-o>j' } this map j to <C-o>j in floating window
-  -- <M-d> and <M-u> are default keymaps to move cursor up and down
+  keymaps = {}                    -- relate to move_cursor_key; the keymaps inside floating window
 }
 
 

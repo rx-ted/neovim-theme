@@ -4,13 +4,10 @@ if not _ then
   return
 end
 
-
-require "barbecue.ui".toggle(true)
-
 vim.opt.updatetime = 200
 
 barbecue.setup({
-  create_autocmd = false,
+  create_autocmd = true,
 })
 
 vim.api.nvim_create_autocmd({
@@ -18,7 +15,6 @@ vim.api.nvim_create_autocmd({
   "BufWinEnter",
   "CursorHold",
   "InsertLeave",
-
   "BufModifiedSet",
 }, {
   group = vim.api.nvim_create_augroup("barbecue.updater", {}),
@@ -26,3 +22,4 @@ vim.api.nvim_create_autocmd({
     require("barbecue.ui").update()
   end,
 })
+require("barbecue.ui").toggle(true)
