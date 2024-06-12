@@ -7,8 +7,8 @@ local keymap = vim.keymap
 
 -- ---------- 视觉模式 ---------- ---
 -- 单行或多行移动
--- keymap.set("v", "J", ":m '>+1<CR>gv=gv")
--- keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 -- ---------- 正常模式 ---------- ---
 -- 窗口
@@ -32,19 +32,7 @@ keymap.set("n", "<C-w>", "<C-w><C-w>")
 keymap.set("n", "<leader>nh", ":nohl<CR>")
 
 -- 切换buffer
--- keymap.set("n", "<leader><Tab>", ":bnext<CR>")
--- keymap.set("n", "<leader><leader><Tab>", ":bprevious<CR>")
 
--- ---------- 插件 ---------- ---
--- nvim-tree
-keymap.set("n", "<C-e>", ":NvimTreeToggle<CR>")
-
--- Navigator
-keymap.set({ 'n', 't' }, '<A-h>', '<CMD>NavigatorLeft<CR>')
-keymap.set({ 'n', 't' }, '<A-l>', '<CMD>NavigatorRight<CR>')
-keymap.set({ 'n', 't' }, '<A-k>', '<CMD>NavigatorUp<CR>')
-keymap.set({ 'n', 't' }, '<A-j>', '<CMD>NavigatorDown<CR>')
-keymap.set({ 'n', 't' }, '<A-p>', '<CMD>NavigatorPrevious<CR>')
 
 -- float terminal
 keymap.set({ 'n', 't' }, '<C-t>', '<CMD>Lspsaga term_toggle<CR>')

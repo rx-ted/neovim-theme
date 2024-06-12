@@ -42,4 +42,3 @@ luac.out
 package-lock.json
 node_modules
 plugin
-plugins
