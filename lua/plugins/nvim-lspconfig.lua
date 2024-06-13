@@ -16,8 +16,15 @@ if not _ then
   return
 end
 
-vim.g.coq_settings = { auto_start = 'shut-up' }
+local _, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
+if not _ then
+  vim.notify("Not found cmp_nvim_lsp module!")
+  return
+end
 
+
+vim.g.coq_settings = { auto_start = 'shut-up' }
+local capabilities = cmp_nvim_lsp.default_capabilities()
 local servers = {
   'clangd',
   'lua_ls',
@@ -28,7 +35,12 @@ local servers = {
 }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup(
-    coq.lsp_ensure_capabilities({
-      on_attach = lsp_format.on_attach
-    }))
+    coq.lsp_ensure_capabilities(
+      {
+        on_attach = lsp_format.on_attach,
+        capabilities = capabilities,
+
+      }
+    )
+  )
 end

@@ -1,6 +1,6 @@
 local _, barbecue = pcall(require, "barbecue")
 if not _ then
-  print("Not found barbecue module!")
+  vim.notify("Not found barbecue module!")
   return
 end
 

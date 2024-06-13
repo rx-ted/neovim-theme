@@ -191,11 +191,11 @@ cmp.setup({
           vim_item.kind = "Clipboard"
         end
 
-        -- if entry.source.name == "nvim_lsp_signature_help" then
-        --     vim_item.kind = "Call"
-        -- end
+        if entry.source.name == "nvim_lsp_signature_help" then
+          vim_item.kind = "Call"
+        end
 
-        -- vim_item = require("tailwindcss-colorizer-cmp").formatter(entry, vim_item)
+        vim_item = require("tailwindcss-colorizer-cmp").formatter(entry, vim_item)
         return vim_item
       end,
       ellipsis_char = '...',
