@@ -93,6 +93,9 @@ return require('packer').startup(function(use)
     'williamboman/mason-lspconfig.nvim',
     'neovim/nvim-lspconfig',
   }
+  use { 'ms-jpq/coq_nvim', run = 'python3 -m coq deps' }
+  use 'ms-jpq/coq.artifacts'
+  use 'ms-jpq/coq.thirdparty'
 
   use {
     "rcarriga/nvim-notify"

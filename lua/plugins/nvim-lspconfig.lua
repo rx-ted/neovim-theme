@@ -10,24 +10,25 @@ if not _ then
   return
 end
 
+local _, coq = pcall(require, 'coq')
+if not _ then
+  vim.notify("Not found coq module!")
+  return
+end
 
-lspconfig.clangd.setup {
-  on_attach = lsp_format.on_attach,
-}
+vim.g.coq_settings = { auto_start = 'shut-up' }
 
-lspconfig.pyright.setup {
-  on_attach = lsp_format.on_attach
+local servers = {
+  'clangd',
+  'lua_ls',
+  'pyright',
+  'tsserver',
+  'bashls',
+  'cmake',
 }
-
-
-lspconfig.lua_ls.setup {
-  on_attach = lsp_format.on_attach
-}
-lspconfig.cmake.setup {
-  on_attach = lsp_format.on_attach
-}
--- lspconfig.tsserver.setup{}
--- lspconfig.clangd.setup{}
-lspconfig.bashls.setup {
-  on_attach = lsp_format.on_attach
-}
+for _, lsp in ipairs(servers) do
+  lspconfig[lsp].setup(
+    coq.lsp_ensure_capabilities({
+      on_attach = lsp_format.on_attach
+    }))
+end
