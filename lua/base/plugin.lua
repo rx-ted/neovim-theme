@@ -53,16 +53,6 @@ return require('packer').startup(function(use)
     requires = 'nvim-tree/nvim-web-devicons'
   }
 
-  use({
-    "utilyre/barbecue.nvim",
-    tag = "*",
-    requires = {
-      "SmiteshP/nvim-navic",
-      "nvim-tree/nvim-web-devicons", -- optional dependency
-    },
-    after = "nvim-web-devicons",     -- keep this if you're using NvChad
-  })
-
   use {
     'nvim-treesitter/nvim-treesitter',
   }
@@ -87,6 +77,14 @@ return require('packer').startup(function(use)
       'saadparwaiz1/cmp_luasnip',
     }
   }
+
+  use({
+    'nvimdev/lspsaga.nvim',
+    after = 'nvim-lspconfig',
+    config = function()
+      require('lspsaga').setup({})
+    end
+  })
 
   use {
     'williamboman/mason.nvim',
@@ -172,6 +170,20 @@ return require('packer').startup(function(use)
     run = "make install_jsregexp"
   })
 
+  use {
+    'Civitasv/cmake-tools.nvim',
+    config = function()
+      require('cmake-tools').setup({})
+    end
+  }
+
+  use {
+    "rcarriga/nvim-dap-ui",
+    requires = {
+      "mfussenegger/nvim-dap",
+      "nvim-neotest/nvim-nio"
+    }
+  }
 
   if packer_bootstrap then
     require('packer').sync()

@@ -22,7 +22,6 @@ if not _ then
   return
 end
 
-
 vim.g.coq_settings = { auto_start = 'shut-up' }
 local capabilities = cmp_nvim_lsp.default_capabilities()
 local servers = {

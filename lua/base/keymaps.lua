@@ -26,19 +26,12 @@ keymap.set("n", "<leader>qq", ":q!<CR>")
 keymap.set("n", "<leader>w", ":w<CR>")
 
 -- switch spaces
-keymap.set("n", "<C-w>", "<C-w><C-w>")
+-- keymap.set("n", "<C-w>", "<C-w><C-w>")
 
 -- 取消高亮
 keymap.set("n", "<leader>nh", ":nohl<CR>")
 
 -- 切换buffer
-
-
--- float terminal
-keymap.set({ 'n', 't' }, '<C-t>', '<CMD>Lspsaga term_toggle<CR>')
-keymap.set({ 'n' }, 'K', '<CMD>Lspsaga hover_doc<CR>')
--- translator
-keymap.set({ 'n', 'v' }, '<C-f>w', '<CMD>TranslateW<CR>')
 
 
 

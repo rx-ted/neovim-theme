@@ -16,7 +16,11 @@ mason.setup({
       package_installed = "✓",
       package_pending = "➜",
       package_uninstalled = "✗"
-    }
+    },
+  },
+  ensure_installed = {
+    "codelldb",
+    "cpptools",
   }
 })
 
@@ -38,6 +42,7 @@ mason_config.setup({
     -- "gopls",
     -- "volar",
     "yamlls",
+    "checkmake",
 
   },
 
