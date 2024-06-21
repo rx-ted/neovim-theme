@@ -40,17 +40,15 @@ return require('packer').startup(function(use)
   }
 
   use {
-    'nvim-lualine/lualine.nvim',
-    requires = {
-      'kyazdani42/nvim-web-devicons',
-      -- 'archibate/lualine-time',
-    }
+    "MunifTanjim/nougat.nvim",
   }
-  -- buffer line
+
   use {
-    'akinsho/bufferline.nvim',
-    tag = "*",
-    requires = 'nvim-tree/nvim-web-devicons'
+    'romgrk/barbar.nvim',
+    requires = {
+      'nvim-tree/nvim-web-devicons',
+      'lewis6991/gitsigns.nvim'
+    }
   }
 
   use {
@@ -150,10 +148,6 @@ return require('packer').startup(function(use)
     "MunifTanjim/nui.nvim"
   }
   use "nvim-lua/plenary.nvim"
-
-  use {
-    "ray-x/lsp_signature.nvim",
-  }
 
   use {
     'folke/noice.nvim',

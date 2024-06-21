@@ -30,19 +30,19 @@ mason_config.setup({
 
   ensure_installed = {
     "lua_ls",
-    "markdown_oxide",
+    -- "markdown_oxide",
     "clangd",
     "cmake",
     -- "dockerls",
     -- "eslint",
     -- "html",
     "jsonls",
-    "biome",
+    -- "biome",
     "pyright",
     -- "gopls",
     -- "volar",
     "yamlls",
-    "checkmake",
+    -- "checkmake",
 
   },
 

@@ -78,20 +78,6 @@ cmp.setup({
       c = cmp.mapping.close(),
     }),
 
-    -- RIME 专用确认
-    -- ['<Space>'] = cmp.mapping(function(fallback)
-    --     if cmp.visible() then
-    --         cmp.mapping.confirm({
-    --             select = true,
-    --             behavior = cmp.ConfirmBehavior.Replace,
-    --         })
-    --     else
-    --         fallback()
-    --     end
-    -- end, { 'i', 's' }),
-    -- 确认
-    -- Accept currently selected item. If none selected, `select` first item.
-    -- Set `select` to `false` to only confirm explicitly selected items.
     ['<CR>'] = cmp.mapping.confirm({
       select = false,
       behavior = cmp.ConfirmBehavior.Insert,

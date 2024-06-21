@@ -5,10 +5,5 @@ if not _ then
 end
 
 
--- float terminal
 vim.keymap.set({ 'n', 't' }, '<C-t>', '<CMD>Lspsaga term_toggle<CR>')
 vim.keymap.set({ 'n' }, 'K', '<CMD>Lspsaga hover_doc<CR>')
-
-
--- loop or previous error loading module 'lspsaga.symbol.winbar'
--- stack traceback:
