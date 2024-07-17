@@ -17,7 +17,7 @@ local packer_bootstrap = ensure_packer()
 vim.cmd([[
     augroup packer_user_config
       autocmd!
-      autocmd BufWritePost plugin.lua source <afile> | PackerSync
+      autocmd BufWritePost plugin.lua source <afile> | PackerInstall
     augroup end
   ]])
 
@@ -54,6 +54,7 @@ return require('packer').startup(function(use)
   use {
     'nvim-treesitter/nvim-treesitter',
   }
+
   use {
     'hrsh7th/nvim-cmp',
     requires = {
@@ -76,14 +77,6 @@ return require('packer').startup(function(use)
     }
   }
 
-  use({
-    'nvimdev/lspsaga.nvim',
-    after = 'nvim-lspconfig',
-    config = function()
-      require('lspsaga').setup({})
-    end
-  })
-
   use {
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
@@ -104,7 +97,6 @@ return require('packer').startup(function(use)
   use "windwp/nvim-autopairs"   -- 自动补全括号
 
   use "lewis6991/gitsigns.nvim" -- 左则git提示
-
 
   use {
     "nvim-telescope/telescope.nvim",
@@ -131,17 +123,6 @@ return require('packer').startup(function(use)
 
   use "lukas-reineke/lsp-format.nvim"
 
-  use {
-    "NeogitOrg/neogit",
-    tag = 'v0.0.1',
-    requires = {
-      "nvim-lua/plenary.nvim",         -- required
-      "nvim-telescope/telescope.nvim", -- optional
-      "sindrets/diffview.nvim",        -- optional
-      "ibhagwan/fzf-lua",              -- optional
-    },
-    config = function() require('neogit').setup {} end,
-  }
   use "lukas-reineke/indent-blankline.nvim"
 
   use {
@@ -170,13 +151,13 @@ return require('packer').startup(function(use)
       require('cmake-tools').setup({})
     end
   }
-
+  -- debugging
   use {
+    'jedrzejboczar/nvim-dap-cortex-debug',
     "rcarriga/nvim-dap-ui",
-    requires = {
-      "mfussenegger/nvim-dap",
-      "nvim-neotest/nvim-nio"
-    }
+    "mfussenegger/nvim-dap",
+    "nvim-neotest/nvim-nio",
+    'theHamsta/nvim-dap-virtual-text',
   }
 
   if packer_bootstrap then

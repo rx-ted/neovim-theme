@@ -9,11 +9,11 @@ if not _ then
   return
 end
 
-local _, dap_cortex_debug = pcall(require, 'dap-cortex-debug')
-if not _ then
-  vim.notify("Not found dap-cortex-debug module!")
-  return
-end
+-- local _, dap_cortex_debug = pcall(require, 'dap-cortex-debug')
+-- if not _ then
+--   vim.notify("Not found dap-cortex-debug module!")
+--   return
+-- end
 
 dapui.setup({
 })
@@ -52,16 +52,39 @@ vim.fn.sign_define(
     texthl = 'DapLogPoint',
     linehl = '',
     numhl = ''
+  })
+
+local codelldb_path = vim.fn.expand('~') .. '/.local/share/nvim/mason/packages/codelldb'
+local cortex_path = vim.fn.expand('~') .. '/.local/share/nvim/mason/packages/cortex-debug'
+
+dap.adapters.codelldb = {
+  type = 'server',
+  port = '${port}',
+  executable = {
+    command = codelldb_path .. '/extension/adapter/codelldb', -- .exe on Windows?
+    args = { '--port', '${port}' },
+    detached = not vim.fn.has('macunix'),
   }
-)
-dap_cortex_debug.setup({
-  debug = true,
-  dapui_rtt = true,
+}
 
-})
+dap.adapters.cortex_debug = {
+
+}
 
 
-require('dap.ext.vscode').load_launchjs(nil, { cppdbg = { 'c', 'cpp' } })
+dap.configurations.cpp = {
+  {
+    name = "Launch file",
+    type = "codelldb",
+    request = "launch",
+    program = function()
+      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+    end,
+    cwd = '${workspaceFolder}',
+    stopOnEntry = false,
+  },
+}
+dap.configurations.c = dap.configurations.cpp
 
 
 vim.keymap.set('n', '<F5>', function() require('dap').continue() end)
