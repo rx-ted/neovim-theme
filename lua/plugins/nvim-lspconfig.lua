@@ -11,8 +11,7 @@ if not _ then
 end
 
 local _, coq = pcall(require, 'coq')
-if not _ then
-  vim.notify("Not found coq module!")
+if not _ then  vim.notify("Not found coq module!")
   return
 end
 
@@ -21,6 +20,18 @@ if not _ then
   vim.notify("Not found cmp_nvim_lsp module!")
   return
 end
+
+local _,neodev =  pcall(require,"neodev")
+if not _ then
+  vim.notify("Not found neodev module!")
+  return
+end
+
+
+neodev.setup({
+  library = { plugins = { "nvim-dap-ui" }, types = true },
+})
+
 
 vim.g.coq_settings = { auto_start = 'shut-up' }
 local capabilities = cmp_nvim_lsp.default_capabilities()
@@ -34,12 +45,23 @@ local servers = {
 }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup(
-    coq.lsp_ensure_capabilities(
+    {
+
+      coq.lsp_ensure_capabilities(
       {
         on_attach = lsp_format.on_attach,
         capabilities = capabilities,
 
       }
-    )
+      )
+,
+      settings = {
+        Lua = {
+          completion = {
+            callSnippet = "Replace"
+      }
+    }
+  },
+}
   )
 end

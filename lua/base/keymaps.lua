@@ -16,8 +16,6 @@ keymap.set("n", "<leader>sv", "<C-w>v") -- 水平新增窗口
 keymap.set("n", "<leader>sh", "<C-w>s") -- 垂直新增窗口
 
 -- close window
-
-keymap.set("n", "<leader>sc", "<C-w>c") -- close currenct window
 keymap.set("n", "<leader>so", "<C-w>o") -- close other windows
 
 -- exit
@@ -34,7 +32,17 @@ keymap.set("n", "<leader>nh", ":nohl<CR>")
 -- 切换buffer
 
 
-
 -- switch buffer
 keymap.set("n", "<leader><Tab>", ":bnext<CR>")
 keymap.set("n", "<leader><leader><Tab>", ":bprevious<CR>")
+
+-- lspsaga config
+keymap.set({'n','t'},'<A-d>', '<Cmd>Lspsaga term_toggle<CR>')
+keymap.set('n','<A-u>', '<Cmd>Lspsaga outline<CR>')
+keymap.set('n','<A-k>', '<Cmd>Lspsaga hover_doc<CR>')
+keymap.set("n", "<A-e>", function()
+  require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.ERROR })
+end)
+
+
+
