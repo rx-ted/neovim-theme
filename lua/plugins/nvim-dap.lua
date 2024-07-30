@@ -16,6 +16,20 @@ if not _ then
 end
 
 
+local _,neodev =  pcall(require,"neodev")
+if not _ then
+  vim.notify("Not found neodev module!")
+  return
+end
+
+
+neodev.setup({
+  library = { plugins = { "nvim-dap-ui" }, types = true },
+})
+
+
+
+
 dapui.setup(
 {
 
