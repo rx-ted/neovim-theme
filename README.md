@@ -1,4 +1,4 @@
-# Nv
+# neovim-theme
 
 A [Neovim](https://neovim.io) setup based on [LazyVim](https://github.com/LazyVim/LazyVim)
 
@@ -6,9 +6,10 @@ A [Neovim](https://neovim.io) setup based on [LazyVim](https://github.com/LazyVi
 
 1. Install [Neovim] version 0.8 or higher on your machine
 2. Remove or backup your existing configuration files in `~/.config/nvim`
-3. Clone the git repo `git clone https://github.com/appelgriebsch/Nv ~/.config/nvim`
-4. Run `nvim` from a terminal
-5. Use the `LazyExtras` option from within Neovim to enable optional plugins
+3. Clone the git repo `git clone https://github.com/rx-ted/neovim-theme ~/.config/nvim`
+4. Switch others themes via `main`, `master`, `lazyvim`, so we need run `git switch lazyvim && git pull origin lazyvim`.
+5. Run `nvim` from a terminal
+6. Use the `LazyExtras` option from within Neovim to enable optional plugins
 
 ## Show case
 
