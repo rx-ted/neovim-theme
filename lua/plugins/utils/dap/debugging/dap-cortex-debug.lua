@@ -25,7 +25,13 @@ return {
         gdbPath = "arm-none-eabi-gdb",
         -- toolchainPath = "/usr/bin",
         -- toolchainPrefix = "arm-none-eabi",
-        runToEntryPoint = "main",
+        runToEntryPoint = function()
+          local name = vim.fn.input("Please input the entry point name: ")
+          if name == "" or name == nil then
+            name = "main"
+          end
+          return name
+        end,
         swoConfig = { enabled = false },
         showDevDebugOutput = "raw",
         gdbTarget = "localhost:3333",

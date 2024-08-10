@@ -1,6 +1,11 @@
 -- Options are automatically loaded before lazy.nvim startup
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 
+vim.opt.textwidth = 80
+-- 防止包裹
+vim.opt.wrap = true
+vim.opt.linebreak = true
+
 -- disable some extension providers
 vim.g.loaded_python3_provider = 0
 vim.g.loaded_ruby_provider = 0
