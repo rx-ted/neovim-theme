@@ -1,3 +1,5 @@
+local lang = require("plugins.extras.lang.deafult")
+
 return {
   -- extend auto completion
   {
@@ -16,32 +18,15 @@ return {
     "nvim-treesitter/nvim-treesitter",
     opts = function(_, opts)
       if type(opts.ensure_installed) == "table" then
-        vim.list_extend(opts.ensure_installed, {
-          "comment",
-          "diff",
-          "dockerfile",
-          "dot",
-          "git_rebase",
-          "gitattributes",
-          "gitcommit",
-          "gitignore",
-          "graphql",
-          "hcl",
-          "http",
-          -- "jq",
-          "make",
-          "mermaid",
-          -- "sql"
-          -- "cmake",
-          "cpp",
-          "python",
-          "c",
-          "typescript",
-          "vue",
-          "yaml",
-          -- "clangd",
-        })
+        vim.list_extend(opts.ensure_installed, lang.treesitter_languages)
       end
     end,
+  },
+
+  -- Automatically add closing tags for HTML and JSX
+  {
+    "windwp/nvim-ts-autotag",
+    event = "LazyFile",
+    opts = {},
   },
 }
