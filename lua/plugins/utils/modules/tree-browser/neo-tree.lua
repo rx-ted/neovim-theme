@@ -9,6 +9,17 @@ return {
     "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
   },
   opts = {
+    filesystem = {
+      filtered_items = {
+        visible = false, -- when true, they will just be displayed differently than normal items
+        hide_dotfiles = false,
+        hide_gitignored = false,
+        hide_hidden = false, -- only works on Windows for hidden files/directories
+        hide_by_name = {
+          "node_modules",
+        },
+      },
+    },
     sources = {
       "filesystem",
       "buffers",
@@ -58,7 +69,7 @@ return {
     },
   },
   config = function(_, opts)
-    require("neo-tree").setup()
+    require("neo-tree").setup(opts)
 
     local function on_move(data)
       LazyVim.lsp.on_rename(data.source, data.destination)

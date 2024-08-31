@@ -2,13 +2,7 @@ local format_languages = {
   "clangd",
   "lua_ls",
   "pyright",
-  -- "biome",
-  "tsserver",
-  "bashls",
-  "cmake",
-  "jsonls",
-  "yamlls",
-  "checkmake",
+  "biome",
 }
 
 local server_languages = {
@@ -24,6 +18,7 @@ local server_languages = {
 
 local dap_languages = {
   "codelldb",
+  "cortex-debug",
   -- "cpptools",
 }
 

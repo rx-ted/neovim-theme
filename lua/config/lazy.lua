@@ -49,10 +49,12 @@ require("lazy").setup({
       },
     },
   },
+
   git = {
     log = { "-8" }, -- show commits from the last 3 days
     timeout = 120, -- kill processes that take more than 2 minutes
-    url_format = "https://dgithub.xyz/%s.git",
+    -- url_format = "https://dgithub.xyz/%s.git",
+    url_format = "git@github.com:/%s.git",
     filter = true,
   },
 })
