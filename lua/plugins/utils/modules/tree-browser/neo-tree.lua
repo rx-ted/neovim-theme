@@ -19,6 +19,9 @@ return {
           "node_modules",
         },
       },
+      follow_current_file = {
+        enable = true,
+      },
     },
     sources = {
       "filesystem",
