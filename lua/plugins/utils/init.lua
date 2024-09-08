@@ -33,7 +33,5 @@ return {
 
   -- dap
   require("plugins.utils.dap.core"),
-  require("plugins.utils.dap.debugging.nlua"),
-  require("plugins.utils.dap.debugging.nodejs"),
   require("plugins.utils.dap.debugging.dap-cortex-debug"),
 }
