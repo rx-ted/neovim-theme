@@ -29,3 +29,10 @@ if vim.g.neovide then
   vim.cmd([[nnoremap <S-ScrollWheelUp> <ScrollWheelRight>]])
   vim.cmd([[nnoremap <S-ScrollWheelDown> <ScrollWheelLeft>]])
 end
+
+vim.cmd([[
+set tw=60
+set autoindent
+set shiftwidth=4
+set softtabstop=4
+]])
