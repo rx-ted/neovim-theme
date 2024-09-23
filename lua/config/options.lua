@@ -31,8 +31,10 @@ if vim.g.neovide then
 end
 
 vim.cmd([[
-set tw=60
+set tw=40
 set autoindent
-set shiftwidth=4
-set softtabstop=4
+set shiftwidth=2
+set softtabstop=2
+set colorcolumn=40
+set wrap
 ]])
