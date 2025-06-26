@@ -16,7 +16,10 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "gruvbox",
+      -- colorscheme = "gruvbox",
+      colorscheme = function()
+        require("vscode").load()
+      end,
     },
   },
 
