@@ -8,8 +8,8 @@ local themes_customs = aux.themes_customs
 
 M.base46 = {
   transparency = true,
-  theme = "bearded-arc",
-  theme_toggle = { "bearded-arc", "bearded-arc" },
+  theme = "vscode_dark",
+  theme_toggle = { "vscode_dark", "vscode_dark" },
   integrations = {
     "blankline",
     "cmp",
@@ -29,6 +29,8 @@ M.base46 = {
     "whichkey",
   },
 }
+
+M.nvdash = { load_on_startup = true }
 
 M.base46.hl_override = {
   DevIconMd = { fg = "#FFFFFF", bg = "NONE" },
