@@ -1,9 +1,9 @@
 ---@type NvPluginSpec
 return {
   "nvim-tree/nvim-tree.lua",
-  enabled = false,
+  enabled = true,
   init = function()
-    vim.keymap.set("n", "<C-n>", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle NvimTree" })
+    vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle NvimTree" })
   end,
   config = function()
     dofile(vim.g.base46_cache .. "nvimtree")

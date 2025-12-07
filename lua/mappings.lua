@@ -74,13 +74,13 @@ map("n", "<leader>cp", function()
 end, { desc = "Open color picker" })
 
 -- NvChad
-map("n", "<leader>th", function()
+map("n", "<leader>ui", function()
   require("nvchad.themes").open { style = "flat" }
 end, { desc = "Open theme picker" })
 
 -- NvMenu
 local menus = utils.menus
-map({ "n", "v" }, "<C-t>", function()
+map({ "n", "v" }, "<leader>mn", function()
   require("menu").open(menus.main)
 end, { desc = "Open NvChad menu" })
 
@@ -184,3 +184,11 @@ map(
 map("n", "<leader>rf", function()
   vim.cmd [[%s/[a-zA-Z]/\=nr2char((char2nr(submatch(0)) - (char2nr(submatch(0)) >= 97 ? 97 : 65) + 13) % 26 + (char2nr(submatch(0)) >= 97 ? 97 : 65))/g]]
 end, { desc = "_ Mum and dad were having fun" })
+
+
+map("n", "<leader>wq", ":wq<CR>", { desc = "Write and exit" })
+map("n", "<leader>q", ":q!<CR>", { desc = "Exit the current window" })
+map("n", "<leader><leader>q", ":qa!<CR>", { desc = "Exit all windows" })
+
+
+map("n", "<leader>lz", "<cmd>Lazy<cr>", { desc = "Open Lazy UI" })
