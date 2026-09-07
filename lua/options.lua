@@ -7,7 +7,6 @@ local custom = {
     skip_ts_context_commentstring_module = true,
     tabufline_visible = true,
     showtabline = 1,
-    python3_host_prog = "/opt/homebrew/bin/python3",
     -- clipboard = "wl-copy",
   },
   opt = {

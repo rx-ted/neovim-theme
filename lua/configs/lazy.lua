@@ -1,6 +1,6 @@
 return {
   dev = {
-    path = "/home/gale/workspace/neovim/",
+    path = vim.fn.stdpath "config" .. "/../dev/plugins/",
     fallback = true,
   },
   change_detection = {
