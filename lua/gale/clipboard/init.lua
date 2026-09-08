@@ -1,3 +1,13 @@
+-- 环境分派：
+-- 1. SSH/远程 → OSC52（经终端写入本地剪贴板，与服务器是否有图形环境无关）
+-- 2. 非 SSH → 平台原生剪贴板（WSL / macOS / Linux）
+local osc52 = require "gale.clipboard.osc52"
+
+if osc52.detect_ssh() then
+  osc52.configure()
+  return
+end
+
 -- 平台判断
 local is_wsl = (vim.fn.has "wsl" == 1)
 local is_mac = (vim.fn.has "macunix" == 1) -- macOS

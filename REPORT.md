@@ -24,4 +24,6 @@ codesnap, crates, gleam, mylorem, precognition, rustaceanvim, screenkey, showkey
 - [x] 启用 Python provider：已安装 pynvim 0.6.0 到 Homebrew python3.10，`has('python3')` = 1
 - [x] node provider：已 `npm install -g neovim`，`has('node')` = 1
 - [x] 清理：已删插件在 lazy 目录与 lazy-lock.json 中均无残留（原本未安装），无需 `:Lazy clean`
+- [x] **SSH 剪贴板（OSC52）**：`gale/clipboard` 在 SSH 环境自动切到 OSC52 provider，
+      yank/复制/删除经终端写入**本地**剪贴板；markdown 预览 URL 也复用同一机制
 - [ ] 按实际语言栈进一步裁剪插件
