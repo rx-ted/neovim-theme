@@ -7,6 +7,7 @@ local custom = {
     skip_ts_context_commentstring_module = true,
     tabufline_visible = true,
     showtabline = 1,
+    -- python3_host_prog is set in init.lua before providers are probed
     -- clipboard = "wl-copy",
   },
   opt = {
@@ -65,3 +66,7 @@ for i, opts in pairs(custom) do
     vim[i][k] = v
   end
 end
+
+-- Re-enable python/node providers (disabled by nvchad.options)
+vim.g.loaded_python3_provider = nil
+vim.g.loaded_node_provider = nil

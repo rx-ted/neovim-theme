@@ -61,4 +61,5 @@ Required:
 
 - **2026-09**: Platform migrated to macOS (Homebrew); disabled and removed 10 plugins
   (codesnap, crates, gleam, mylorem, precognition, rustaceanvim, screenkey, showkeys,
-  vim-astro, vim-visual-multi). See `REPORT.md` for the full analysis.
+  vim-astro, vim-visual-multi). Enabled the Python3 provider via Homebrew
+  `python3.10` (pynvim). See `REPORT.md` for the full analysis.

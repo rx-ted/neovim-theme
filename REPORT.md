@@ -10,8 +10,10 @@
 
 ## 已修改
 - `lua/configs/lazy.lua`：dev path 由失效的 `/home/gale/workspace/neovim/` 改为平台无关 `${stdpath config}/../dev/plugins/`
-- `lua/options.lua`：移除失效的 `python3_host_prog = "/opt/homebrew/bin/python3"`
+- `lua/options.lua`：移除失效的 `python3_host_prog = "/opt/homebrew/bin/python3"`；并在 `nvchad.options` 之后重新启用 python/node provider
 - `lua/plugins/init.lua`：停用并删除 10 个插件 spec
+- `init.lua`：在启动最早期设置 `python3_host_prog = "/opt/homebrew/bin/python3.10"`
+- `lua/bootstrap.lua`：移除无效的 "Re-activate providers" 循环（`runtime python3_provider` 无此文件），改由 `options.lua` 处理
 
 ## 已删除的插件（10 个）
 codesnap, crates, gleam, mylorem, precognition, rustaceanvim, screenkey, showkeys, vim-astro, vim-visual-multi
@@ -19,6 +21,7 @@ codesnap, crates, gleam, mylorem, precognition, rustaceanvim, screenkey, showkey
 > 保留：`scrolleof`、`ts-autotag`（与已删插件相邻但功能不同，未删）
 
 ## 待办
-- [ ] 启用 Python provider：安装 `pynvim` 并设置正确的 `python3_host_prog`
-- [ ] 重启后 `:Lazy sync` + `:Lazy clean` 移除已删插件的本地文件
+- [x] 启用 Python provider：已安装 pynvim 0.6.0 到 Homebrew python3.10，`has('python3')` = 1
+- [x] node provider：已 `npm install -g neovim`，`has('node')` = 1
+- [x] 清理：已删插件在 lazy 目录与 lazy-lock.json 中均无残留（原本未安装），无需 `:Lazy clean`
 - [ ] 按实际语言栈进一步裁剪插件
