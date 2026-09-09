@@ -12,7 +12,7 @@ vim.cmd [[
 
 vim.cmd [[
   function! RunHarpoon(...)
-    RunHarpoon
+    lua require("gale.utils").harpoon_menu()
   endfunction
 ]]
 

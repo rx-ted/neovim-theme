@@ -97,7 +97,7 @@ local harpoon_statusline_indicator = function()
   }
 
   local list = require("harpoon"):list()
-  local root_dir = list.config:get_root_dir()
+  local root_dir = vim.fn.getcwd()
   local current_file_path = vim.api.nvim_buf_get_name(0)
   local length = math.min(list:length(), #options.indicators)
   local status = { options.icon }
