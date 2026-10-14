@@ -97,6 +97,13 @@ return {
         lint_events = { "BufWrite", "CursorHold" },
       },
     },
+    -- Neovim 0.12 changed the query predicate/directive handler contract
+    -- (`captures` is now a list of nodes per id). nvim-treesitter master
+    -- has not caught up, which breaks injections/highlighting on 0.12.
+    config = function(_, opts)
+      require("nvim-treesitter.configs").setup(opts)
+      require("gale.treesitter_compat").setup()
+    end,
   },
   { -- Sticky scroll
     "nvim-treesitter/nvim-treesitter-context",
