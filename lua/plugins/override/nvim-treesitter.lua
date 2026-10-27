@@ -3,8 +3,14 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     dependencies = {},
-    opts = {
-      ensure_installed = {
+    lazy = false,
+    build = ":TSUpdate",
+    config = function()
+      require("nvim-treesitter").setup {
+        install_dir = vim.fn.stdpath("data") .. "/site",
+      }
+
+      local parsers = {
         "astro",
         "bash",
         "c",
@@ -32,77 +38,23 @@ return {
         "vimdoc",
         "yaml",
         "zig",
-      },
-      indent = {
-        enable = true,
-      },
-      highlight = {
-        enable = true,
-      },
-      incremental_selection = {
-        enable = true,
-        keymaps = {
-          init_selection = "<leader>is",
-          node_incremental = "<Tab>",
-          scope_incremental = "<S-s>",
-          node_decremental = "<S-Tab>",
-        },
-      },
-      textobjects = {
-        select = {
-          enable = true,
-          lookahead = true,
-          keymaps = {
-            ["af"] = {
-              query = "@function.outer",
-              desc = "Select around function",
-            },
-            ["if"] = {
-              query = "@function.inner",
-              desc = "Select inner part of function",
-            },
-            ["ac"] = {
-              query = "@class.outer",
-              desc = "Select around class",
-            },
-            ["ic"] = {
-              query = "@class.inner",
-              desc = "Select inner part of class",
-            },
-            ["as"] = {
-              query = "@scope",
-              query_group = "locals",
-              desc = "Select language scope",
-            },
-          },
-          selection_modes = {
-            ["@parameter.outer"] = "v",
-            ["@function.outer"] = "V",
-            ["@class.outer"] = "<c-v>",
-          },
-        },
-        swap = {
-          enable = true,
-          swap_next = {
-            ["<leader>wn"] = "@parameter.inner",
-          },
-          swap_previous = {
-            ["<leader>wp"] = "@parameter.inner",
-          },
-        },
-      },
-      query_linter = {
-        enable = true,
-        use_virtual_text = true,
-        lint_events = { "BufWrite", "CursorHold" },
-      },
-    },
-    -- Neovim 0.12 changed the query predicate/directive handler contract
-    -- (`captures` is now a list of nodes per id). nvim-treesitter master
-    -- has not caught up, which breaks injections/highlighting on 0.12.
-    config = function(_, opts)
-      require("nvim-treesitter.configs").setup(opts)
-      require("gale.treesitter_compat").setup()
+      }
+
+      require("nvim-treesitter").install(parsers)
+
+      vim.api.nvim_create_autocmd("FileType", {
+        callback = function()
+          pcall(vim.treesitter.start)
+        end,
+      })
+
+      vim.api.nvim_create_autocmd("FileType", {
+        callback = function()
+          vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+        end,
+      })
+
+      pcall(require("gale.treesitter_compat").setup)
     end,
   },
   { -- Sticky scroll
